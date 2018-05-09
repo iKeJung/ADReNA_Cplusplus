@@ -17,11 +17,15 @@ BackpropagationLayer::BackpropagationLayer(int layerSize, BackpropagationLayer f
     for (int x = 0; x < layerSize; ++x) {
         BackpropagationNeuron* neuron = new BackpropagationNeuron();
         neurons.push_back(neuron);
-        foreach (BackpropagationNeuron* fatherNeuron, fatherLayer.neurons) {
-            neuron->listConnection.push_back(new BackpropagationConnection(fatherNeuron));
+        for (int x = 0; x < fatherLayer.neurons.size(); ++x) {
+            neuron->listConnection.push_back(new BackpropagationConnection(fatherLayer.neurons[x]));
         }
-        /*for (int x = 0; x < fatherLayer.size(); ++x) {
-            neuron->listConnection.push_back(new BackpropagationConnection(fatherLayer[x]));
-        }*/
+    }
+}
+
+BackpropagationLayer::~BackpropagationLayer()
+{
+    for (int x = 0; x < neurons.size(); ++x) {
+        delete neurons[x];
     }
 }

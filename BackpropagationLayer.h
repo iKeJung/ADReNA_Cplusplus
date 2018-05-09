@@ -13,6 +13,7 @@ public:
     BackpropagationLayer();
     BackpropagationLayer(int layerSize);
     BackpropagationLayer(int layerSize, BackpropagationLayer fatherLayer);
+    ~BackpropagationLayer();
     vector<BackpropagationNeuron*> neurons;
 };
 
