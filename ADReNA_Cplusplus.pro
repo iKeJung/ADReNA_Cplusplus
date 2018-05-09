@@ -1,15 +1,15 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2018-05-08T17:35:43
+# Project created by QtCreator 2018-05-09T12:54:35
 #
 #-------------------------------------------------
 
 QT       -= gui
 
-TARGET = DataSet
+TARGET = ADReNA_Cplusplus
 TEMPLATE = lib
 
-DEFINES += DATASET_LIBRARY
+DEFINES += ADRENA_CPLUSPLUS_LIBRARY
 
 # The following define makes your compiler emit warnings if you use
 # any feature of Qt which has been marked as deprecated (the exact warnings
@@ -22,16 +22,24 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
-SOURCES += \
-        DataSet.cpp \
-    DataSetObject.cpp
+
 
 HEADERS += \
-        DataSet.h \
-        dataset_global.h \ 
-    DataSetObject.h
+    Backpropagation.h \
+    BackpropagationLayer.h \
+    BackpropagationNeuron.h \
+    DataSet.h \
+    DataSetObject.h \
+    Adrena_cplusplus_global.h
 
 unix {
     target.path = /usr/lib
     INSTALLS += target
 }
+
+SOURCES += \
+    Backpropagation.cpp \
+    BackpropagationLayer.cpp \
+    BackpropagationNeuron.cpp \
+    DataSet.cpp \
+    DataSetObject.cpp

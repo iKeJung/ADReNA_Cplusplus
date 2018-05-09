@@ -2,9 +2,9 @@
 #define DATASETOBJECT_H
 
 #include "vector"
+#include "Adrena_cplusplus_global.h"
 
-
-class DataSetObject
+class ADRENA_CPLUSPLUSSHARED_EXPORT DataSetObject
 {
 public:
 

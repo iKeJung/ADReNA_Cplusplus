@@ -1,10 +1,13 @@
 #ifndef BACKPROPAGATIONLAYER_H
 #define BACKPROPAGATIONLAYER_H
 
+#include <memory>
 #include <vector>
 #include "BackpropagationNeuron.h"
-#include <memory>
-class BackpropagationLayer
+#include "Adrena_cplusplus_global.h"
+
+
+class ADRENA_CPLUSPLUSSHARED_EXPORT BackpropagationLayer
 {
 public:
     BackpropagationLayer();

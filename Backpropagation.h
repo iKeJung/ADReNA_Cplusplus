@@ -1,9 +1,9 @@
 #ifndef BACKPROPAGATION_H
 #define BACKPROPAGATION_H
 
-#include "backpropagation_global.h"
+#include "Adrena_cplusplus_global.h"
 
-class BACKPROPAGATIONSHARED_EXPORT Backpropagation
+class ADRENA_CPLUSPLUSSHARED_EXPORT Backpropagation
 {
 
 public:

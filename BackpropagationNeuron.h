@@ -1,7 +1,7 @@
 #ifndef BACKPROPAGATIONNEURON_H
 #define BACKPROPAGATIONNEURON_H
 
-#include "Backpropagation_global.h"
+#include "Adrena_cplusplus_global.h"
 #include <vector>
 #include <QRandomGenerator>
 #include <memory>
@@ -10,9 +10,9 @@
 
 using namespace std;
 
-class BackpropagationNeuron;
+class ADRENA_CPLUSPLUSSHARED_EXPORT BackpropagationNeuron;
 
-struct BackpropagationConnection
+struct ADRENA_CPLUSPLUSSHARED_EXPORT BackpropagationConnection
 {
     double valueWeight;
     double deltaWeight;
@@ -20,7 +20,7 @@ struct BackpropagationConnection
     BackpropagationConnection(BackpropagationNeuron* n);
 };
 
-class BackpropagationNeuron
+class ADRENA_CPLUSPLUSSHARED_EXPORT BackpropagationNeuron
 {
 public:
     BackpropagationNeuron();
