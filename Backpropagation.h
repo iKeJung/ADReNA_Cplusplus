@@ -1,10 +1,12 @@
 #ifndef BACKPROPAGATION_H
 #define BACKPROPAGATION_H
 
-#include <math.h>
+#include <cmath>
+
 #include "Adrena_cplusplus_global.h"
 #include "BackpropagationLayer.h"
 #include "DataSet.h"
+
 class ADRENA_CPLUSPLUSSHARED_EXPORT Backpropagation
 {
 

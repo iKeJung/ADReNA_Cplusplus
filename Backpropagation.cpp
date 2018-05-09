@@ -32,11 +32,11 @@ void Backpropagation::doPropagation()
 
 void Backpropagation::calculateSum(BackpropagationLayer* layer)
 {
-    for (int x = 0; x < layer->neurons.size(); ++x) {
+    for (unsigned int x = 0; x < layer->neurons.size(); ++x) {
         BackpropagationNeuron *neuron = layer->neurons[x];
 
         double sum = 0;
-        for (int y = 0; y < neuron->listConnection.size(); ++y) {
+        for (unsigned int y = 0; y < neuron->listConnection.size(); ++y) {
             BackpropagationConnection* connection = neuron->listConnection[y];
             sum += connection->neuron->getValuePattern()*connection->valueWeight;
         }
