@@ -13,13 +13,13 @@ public:
     bool add(DataSetObject* obj);
     std::vector<DataSetObject*> getList();
     int lenght();
-    int getInputSize() const;
-    int getOutputSize() const;
+    unsigned int getInputSize() const;
+    unsigned int getOutputSize() const;
 
 private:
     std::vector<DataSetObject*> data;
-    int inputSize;
-    int outputSize;
+    unsigned int inputSize;
+    unsigned int outputSize;
 };
 
 #endif // DATASET_H

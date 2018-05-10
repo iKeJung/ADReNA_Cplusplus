@@ -31,6 +31,9 @@ public:
     string toString();
     vector<BackpropagationConnection*> listConnection;
 
+    double getValueError() const;
+    void setValueError(double value);
+
 private:
     double valuePattern;
     double valueError;

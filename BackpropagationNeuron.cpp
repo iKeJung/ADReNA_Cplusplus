@@ -37,4 +37,14 @@ string BackpropagationNeuron::toString()
     return ss.str();
 }
 
+double BackpropagationNeuron::getValueError() const
+{
+    return valueError;
+}
+
+void BackpropagationNeuron::setValueError(double value)
+{
+    valueError = value;
+}
+
 

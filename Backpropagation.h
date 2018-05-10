@@ -12,13 +12,13 @@ class ADRENA_CPLUSPLUSSHARED_EXPORT Backpropagation
 
 public:
     Backpropagation();
-    void learn(DataSet trainingSet); //has a thrown exception
+    bool learn(DataSet trainingSet); //has a thrown exception
     std::vector<double> recognize(std::vector<double> input);
 
 
 
 private:
-    void applyPatter(std::vector<double> pattern);
+    void applyPattern(std::vector<double> pattern);
     void doPropagation();
     void calculateSum(BackpropagationLayer *layer);
     double transferFunction(double value);
@@ -33,9 +33,9 @@ private:
     double error;
     int maxIterationNumber;
     int iterationNumber;
-    int inputLayerSize;
+    unsigned int inputLayerSize;
     int outputLayerSize;
-    std::vector<int*> hiddenLayerSizes;
+    std::vector<int> hiddenLayerSizes;
     std::vector<BackpropagationLayer*> layers;
 };
 

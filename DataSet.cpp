@@ -42,12 +42,12 @@ int DataSet::lenght()
     return data.size();
 }
 
-int DataSet::getInputSize() const
+unsigned int DataSet::getInputSize() const
 {
     return inputSize;
 }
 
-int DataSet::getOutputSize() const
+unsigned int DataSet::getOutputSize() const
 {
     return outputSize;
 }

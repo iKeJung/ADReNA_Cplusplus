@@ -12,13 +12,13 @@ BackpropagationLayer::BackpropagationLayer(int layerSize)
     }
 }
 
-BackpropagationLayer::BackpropagationLayer(int layerSize, BackpropagationLayer fatherLayer)
+BackpropagationLayer::BackpropagationLayer(int layerSize, BackpropagationLayer* fatherLayer)
 {
     for (int x = 0; x < layerSize; ++x) {
         BackpropagationNeuron* neuron = new BackpropagationNeuron();
         neurons.push_back(neuron);
-        for (int x = 0; x < fatherLayer.neurons.size(); ++x) {
-            neuron->listConnection.push_back(new BackpropagationConnection(fatherLayer.neurons[x]));
+        for (int x = 0; x < fatherLayer->neurons.size(); ++x) {
+            neuron->listConnection.push_back(new BackpropagationConnection(fatherLayer->neurons[x]));
         }
     }
 }
