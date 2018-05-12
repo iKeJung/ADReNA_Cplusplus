@@ -11,11 +11,28 @@ class ADRENA_CPLUSPLUSSHARED_EXPORT Backpropagation
 {
 
 public:
-    Backpropagation();
+    Backpropagation(int inputLayerSize, int outputLayerSize);
+    Backpropagation(int inputLayerSize, int outputLayerSize, std::vector<int> hiddenLayerSizes);
     bool learn(DataSet trainingSet); //has a thrown exception
     std::vector<double> recognize(std::vector<double> input);
 
+    std::vector<int> getHiddenLayerSizes() const;
+    std::vector<BackpropagationLayer *> getLayers() const;
 
+    bool setLayers(const std::vector<BackpropagationLayer *> &value);
+
+    int getMaxIterationNumber() const;
+    void setMaxIterationNumber(int value);
+
+    int getIterationNumber() const;
+
+    double getLearningRate() const;
+    void setLearningRate(double value);
+
+    double getError() const;
+    void setError(double value);
+
+    int getOutputLayerSize() const;
 
 private:
     void applyPattern(std::vector<double> pattern);

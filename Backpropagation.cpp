@@ -1,8 +1,17 @@
 #include "backpropagation.h"
 
 
-Backpropagation::Backpropagation()
+Backpropagation::Backpropagation(int inputLayerSize, int outputLayerSize)
 {
+    vector<int> hiddenlayersizes = { ((int)round((double)(inputLayerSize / 4)) > 2 ? (int)round((double)(inputLayerSize / 4)) : 2) };
+
+    buildBackpropagation(inputLayerSize, outputLayerSize, hiddenlayersizes);
+}
+
+Backpropagation::Backpropagation(int inputLayerSize, int outputLayerSize, std::vector<int> hiddenLayerSizes)
+{
+    buildBackpropagation(inputLayerSize, outputLayerSize, hiddenLayerSizes);
+
 }
 
 bool Backpropagation::learn(DataSet trainingSet)
@@ -184,4 +193,94 @@ void Backpropagation::buildBackpropagation(int inputLayerSize, int outputLayerSi
     }
 
     layers.push_back(new BackpropagationLayer(outputLayerSize, last));
+}
+
+int Backpropagation::getOutputLayerSize() const
+{
+    return outputLayerSize;
+}
+
+double Backpropagation::getError() const
+{
+    return error;
+}
+
+void Backpropagation::setError(double value)
+{
+    error = value;
+}
+
+double Backpropagation::getLearningRate() const
+{
+    return ETA;
+}
+
+void Backpropagation::setLearningRate(double value)
+{
+    ETA = value;
+}
+
+int Backpropagation::getIterationNumber() const
+{
+    return iterationNumber;
+}
+
+int Backpropagation::getMaxIterationNumber() const
+{
+    return maxIterationNumber;
+}
+
+void Backpropagation::setMaxIterationNumber(int value)
+{
+    maxIterationNumber = value;
+}
+
+bool Backpropagation::setLayers(const std::vector<BackpropagationLayer *> &value)
+{
+    bool incorrectDataFormat = false;
+
+    if (value.size() == layers.size())
+    {
+        for (int x = 0; x < layers.size(); x++)
+            if (value[x]->neurons.size() != layers[x]->neurons.size())
+                incorrectDataFormat = true;
+    }
+    else
+        incorrectDataFormat = true;
+
+    if (incorrectDataFormat)
+        return false;
+    else
+    {
+        for (int x = 0; x < layers.size(); ++x) {
+            delete layers[x];
+        }
+        layers = value;
+
+        BackpropagationLayer* lastLayer = NULL;
+        for (int x = 0; x < layers.size(); ++x) {
+            BackpropagationLayer *layer = layers[x];
+            for (int y = 0; y < layer->neurons.size(); ++y) {
+                BackpropagationNeuron* neuron = layer->neurons[x];
+                int connNumber = 0;
+                for (int z = 0; z < neuron->listConnection.size(); ++z) {
+                    BackpropagationConnection *conn = neuron->listConnection[x];
+                    conn->neuron = lastLayer->neurons[connNumber];
+                    connNumber++;
+                }
+            }
+            lastLayer = layer;
+        }
+    }
+    return true;
+}
+
+std::vector<BackpropagationLayer *> Backpropagation::getLayers() const
+{
+    return layers;
+}
+
+std::vector<int> Backpropagation::getHiddenLayerSizes() const
+{
+    return hiddenLayerSizes;
 }
